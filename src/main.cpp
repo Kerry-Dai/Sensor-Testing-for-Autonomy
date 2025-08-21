@@ -41,6 +41,8 @@ void loop() {
       } else
       {
         Serial.println("Below the lower limit");
+        Serial.print(">distance:");
+        Serial.print(0);
       }
     } else Serial.println("ERROR");
   }
