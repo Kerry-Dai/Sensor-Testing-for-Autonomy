@@ -1,18 +1,48 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include <SoftwareSerial.h>
+
+SoftwareSerial mySerial(11, 10); // RX, TX
+unsigned char data[4] = {};
+float distance;
+
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(57600);
+  // Print log
+  Serial.println("setup");
+
+  //Serial.begin(57600);
+  mySerial.begin(9600);
 }
 
+float i=0;
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  do {
+    for (int i = 0; i < 4; i++)
+    {
+      data[i] = mySerial.read();
+    }
+  } while (mySerial.read() == 0xff);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  mySerial.flush();
+
+  if (data[0] == 0xff)
+  {
+    int sum;
+    sum = (data[0] + data[1] + data[2]) & 0x00FF;
+    if (sum == data[3])
+    {
+      distance = (data[1] << 8) + data[2];
+      if (distance > 260)
+      {
+        Serial.print(">distance:");
+        Serial.print(distance / 10);
+      } else
+      {
+        Serial.println("Below the lower limit");
+      }
+    } else Serial.println("ERROR");
+  }
+  delay(50);
 }
