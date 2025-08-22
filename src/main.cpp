@@ -28,7 +28,7 @@ void loop() {
   
 
   distance = Ultrasonic_Read(RX_us,TX_us);
-  valuetimegraph("Distance US", distance);
+  Serial.println(distance);
 
   
 }
