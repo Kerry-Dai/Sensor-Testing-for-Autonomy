@@ -19,12 +19,6 @@ unsigned char data[4] = {};
 
 void setup() {
   Serial.begin(57600);
-  // Print log
-  Serial.println("setup");
-
-  
-  //-------- 
-  //mySerial.begin(9600);
 
 }
 

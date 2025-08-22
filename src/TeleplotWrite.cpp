@@ -13,7 +13,7 @@ void valuetimegraph(const char * graph_title, float value)
 
 }
 
-void xygraph(char graph_title, float x, float y)
+void xygraph(const char * graph_title, float x, float y)
 //print the data in xy format (no time axis)
 {
 
@@ -28,7 +28,7 @@ void xygraph(char graph_title, float x, float y)
 }
 
 
-void xysetscale(char graph_title, float xcentre, float ycentre, float xwidth, float ywidth)
+void xysetscale(const char * graph_title, float xcentre, float ycentre, float xwidth, float ywidth)
 //print four corners on the graph - make sure the data does not exceed the corners or the formatting will look weird
 {
     Serial.print(">");
