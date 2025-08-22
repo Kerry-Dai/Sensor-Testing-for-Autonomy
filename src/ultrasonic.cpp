@@ -51,8 +51,6 @@ float Ultrasonic_Read(int RX_us, int TX_us)
         return 0.;
     }
   }
-
-
 }
 
 

@@ -2,7 +2,9 @@
 #include <math.h>
 
 #include <SoftwareSerial.h>
+
 #include <ultrasonic.h>
+#include <TeleplotWrite.h>
 
 int RX_us = 11;
 int TX_us = 10;
@@ -32,7 +34,7 @@ void loop() {
   
 
   distance = Ultrasonic_Read(RX_us,TX_us);
-  Serial.print(">DistanceUS:"); Serial.println(distance);
+  valuetimegraph("Distance US", distance);
 
   
 }
