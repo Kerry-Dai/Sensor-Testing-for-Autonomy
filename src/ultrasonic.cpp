@@ -14,6 +14,8 @@ float Ultrasonic_Read(int RX_us, int TX_us)
     //should be in setup loop but idk how to implement
     mySerial.begin(9600);
 
+    //Without this delay, the US would not have enough time to "start up" and would give no correct readings
+    delay(100);
 
     do {
     for (int i = 0; i < 4; i++)
@@ -29,8 +31,8 @@ float Ultrasonic_Read(int RX_us, int TX_us)
     int sum;
     sum = (data[0] + data[1] + data[2]) & 0x00FF;
 
-    //Invalid reading - return NULL
-    //Reading below lower limit - return NULL
+    //Invalid reading - return 0
+    //Reading below lower limit - return 0
     if (sum == data[3])
     {
       distance = (data[1] << 8) + data[2];
@@ -41,16 +43,15 @@ float Ultrasonic_Read(int RX_us, int TX_us)
       else 
       {
         Serial.println("US below lower limit");
-        return 7.;
+        return 0.;
       }
     
     } else {
         Serial.println("ERROR - ultrasonic reading error");
-        Serial.println(sum);
-        Serial.println(data[3]);
-        return 7.;
+        return 0.;
     }
   }
+
 
 }
 
