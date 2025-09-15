@@ -18,6 +18,9 @@ float distanceR,distanceUS;
 
 SoftwareSerial mySerialRadar(TX_r, RX_r);
 DFRobot_C4001_UART radar(&mySerialRadar, 9600);
+//defining softwareserial twice will cause issues as only the second instance will work, but since the definition for the US is within its own looped code, it will always be the second instance in US mode
+//for radar, it is defined here in the global scope so it will always be the latest instance in radar mode
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -45,7 +48,7 @@ void loop() {
     valuetimegraph("US Distance",Ultrasonic_Read(RX_us,TX_us));
 
   } else if (read_data == 1) {
-    
+
     valuetimegraph("Target Distance (radar)",radar_range(RX_r, TX_r, mySerialRadar, radar));
     valuetimegraph("Target Speed (radar)",radar_speed(RX_r, TX_r, mySerialRadar, radar));
     valuetimegraph("Target Energy (radar)",radar_energy(RX_r, TX_r, mySerialRadar, radar));
