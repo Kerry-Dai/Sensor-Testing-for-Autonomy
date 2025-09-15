@@ -8,7 +8,7 @@ void radar_setup(uint16_t min, uint16_t max, uint16_t thres, int RX_r, int TX_r,
 
 /*
 SoftwareSerial mySerial(RX_r, TX_r);
-DFRobot_C4001_UART radar(&mySerial, 9600);
+DFRobot_C4001_UART radar(&mySerial, 9600); 
 */
 
 
