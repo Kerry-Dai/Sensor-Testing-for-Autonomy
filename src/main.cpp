@@ -28,7 +28,7 @@ void setup() {
 
 }
 
-void loop() {
+void loop() { 
 
   valuetimegraph("US Distance",Ultrasonic_Read(RX_us,TX_us));
 
