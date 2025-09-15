@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <AltSoftSerial.h>
 
 
 float Ultrasonic_Read(int RX_us, int TX_us) 
@@ -10,7 +9,7 @@ float Ultrasonic_Read(int RX_us, int TX_us)
     float distance;
 
     //This should only happen once but i dont know how to implement that with function notation
-    AltSoftSerial mySerialUS(RX_us, TX_us); // RX, TX
+    SoftwareSerial mySerialUS(RX_us, TX_us); // RX, TX
 
     //should be in setup loop but idk how to implement
     mySerialUS.begin(9600);
