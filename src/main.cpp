@@ -19,10 +19,13 @@ float distanceR,distanceUS;
 SoftwareSerial mySerialRadar(TX_r, RX_r);
 DFRobot_C4001_UART radar(&mySerialRadar, 9600);
 
-int read_data = 0 ;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+int read_data = 1 ;
   // 0 = Ultrasonic
   // 1 = Radar
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 void setup() {
   Serial.begin(57600);
@@ -35,11 +38,18 @@ void setup() {
 
 void loop() { 
 
-  
+
+  //depending on read data mode, print and read data accordingly
   if (read_data == 0) {
+
     valuetimegraph("US Distance",Ultrasonic_Read(RX_us,TX_us));
+
   } else if (read_data == 1) {
-    valuetimegraph("Radar Distance",radar_range(RX_r, TX_r, mySerialRadar, radar));
+    
+    valuetimegraph("Target Distance (radar)",radar_range(RX_r, TX_r, mySerialRadar, radar));
+    valuetimegraph("Target Speed (radar)",radar_speed(RX_r, TX_r, mySerialRadar, radar));
+    valuetimegraph("Target Energy (radar)",radar_energy(RX_r, TX_r, mySerialRadar, radar));
+
   } else {
     Serial.println("Select appropriate sensor to read");
   }

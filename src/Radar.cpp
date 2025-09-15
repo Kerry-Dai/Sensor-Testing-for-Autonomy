@@ -44,32 +44,33 @@ while (!radar.begin()) {
 //Is there a better way without using delays?
 //I have to redefine the variables upon every reading - how do i avoid this?
 
-float radar_speed(int RX_r, int TX_r, DFRobot_C4001_UART radar)
+float radar_speed(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar)
 //speed
 {
     radar.getTargetNumber();
     
-    delay(100);
+    //delay(100);
     return radar.getTargetSpeed();
 }
 
 
 float radar_range(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar)
-//dist
+//distance
 {
     //mySerialRadar.listen();
     radar.getTargetNumber();
-    delay(100);
+    //delay(100);
     return radar.getTargetRange();  
 }
 
 
-uint32_t radar_energy(int RX_r, int TX_r, DFRobot_C4001_UART radar)
+uint32_t radar_energy(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar)
 //not sure what this is yet
 {
     radar.getTargetNumber();
 
-    delay(100);
+    //delay(100);
     return radar.getTargetEnergy();
 }
+
 

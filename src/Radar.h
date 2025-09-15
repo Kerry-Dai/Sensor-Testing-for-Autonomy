@@ -6,9 +6,9 @@ void radar_setup(uint16_t min, uint16_t max, uint16_t thres, int RX_r, int TX_r,
 
 float radar_range(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar);
 
-float radar_speed(int RX_r, int TX_r, DFRobot_C4001_UART radar);
+float radar_speed(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar);
 
-uint32_t radar_energy(int RX_r, int TX_r, DFRobot_C4001_UART radar);
+uint32_t radar_energy(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar);
 
 
 
