@@ -57,7 +57,6 @@ float radar_speed(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C400
 float radar_range(int RX_r, int TX_r, SoftwareSerial mySerialRadar, DFRobot_C4001_UART radar)
 //distance
 {
-    //mySerialRadar.listen();
     radar.getTargetNumber();
     //delay(100);
     return radar.getTargetRange();  
